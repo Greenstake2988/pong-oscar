@@ -10,7 +10,7 @@ end
 
 function Paleta:reset()
     self.x = ANCHO_VIRTUAL / 2 - 2
-    self.y = ALTO_VIRTUAL / 2 - 2
+    self.y = ALTURA_VIRTUAL / 2 - 2
     self.dy = math.random(2) == 1 and -100 or 10
     self.dx = math.random(-50, 50)
 end
@@ -20,7 +20,7 @@ function Paleta:update(dt)
     if self.dy < 0 then
         self.y = math.max(0, self.y + self.dy * dt)
     else
-        self.y = math.min(ALTO_VIRTUAL - self.alto, self.y + self.dy * dt)
+        self.y = math.min(ALTURA_VIRTUAL - self.alto, self.y + self.dy * dt)
     end
 end
 
