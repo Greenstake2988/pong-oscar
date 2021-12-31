@@ -47,6 +47,9 @@ function love.load()
 	Jugador1 = Paleta(10, 20, 5, 20)
 	Jugador2 = Paleta(ANCHO_VIRTUAL - 10, ALTURA_VIRTUAL - 30, 5, 20)
 
+	AI = Paleta(ANCHO_VIRTUAL - 10, ALTURA_VIRTUAL - 30, 5, 20)
+
+
 	Pelota = Pelota(ANCHO_VIRTUAL / 2 - 2,
 	ALTURA_VIRTUAL / 2 - 2, 4, 4)
 
@@ -141,7 +144,15 @@ function love.update(dt)
 	elseif love.keyboard.isDown('s') then
 		Jugador1.dy = VELOCIDAD_DE_LAS_PALETAS 
 	else
-		Jugador1.dy = 0
+		--el AI toma el control
+		--Jugador1.dy = 0
+		if Pelota.y  < Jugador1.y + 10 then
+			Jugador1.dy = -VELOCIDAD_DE_LAS_PALETAS
+		elseif Pelota.y  > Jugador1.y - 10 then
+			Jugador1.dy = VELOCIDAD_DE_LAS_PALETAS
+		else
+			Jugador1.dy = 0
+		end
 	end
 
 	if love.keyboard.isDown('up') then
